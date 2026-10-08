@@ -2,12 +2,12 @@ import { Zap, Lock, Gift } from "lucide-react";
 
 export default function AboutUs() {
   return (
-    <div className="min-h-screen bg-white text-neutral-900">
-      <header className="border-b border-neutral-200">
+    <div className="bg-white text-neutral-900">
+      {/* <header className="border-b border-neutral-200">
         <div className="max-w-3xl mx-auto px-6 py-4">
           <a href="/" className="text-lg font-bold text-teal-600">MyToolzy</a>
         </div>
-      </header>
+      </header> */}
 
       <div className="max-w-4xl mx-auto px-6 py-16">
         {/* Hero */}
@@ -99,7 +99,7 @@ export default function AboutUs() {
         </div>
       </div>
 
-      <footer className="border-t border-neutral-200 py-8 mt-12">
+      {/* <footer className="border-t border-neutral-200 py-8 mt-12">
         <div className="max-w-4xl mx-auto px-6 flex justify-between text-sm text-neutral-500">
           <span>© 2026 MyToolzy</span>
           <div className="flex gap-4">
@@ -107,7 +107,7 @@ export default function AboutUs() {
             <a href="/contact" className="hover:text-teal-600">Contact</a>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }

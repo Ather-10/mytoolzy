@@ -1,11 +1,11 @@
 export default function TermsOfService() {
   return (
-    <div className="min-h-screen bg-white text-neutral-900">
-      <header className="border-b border-neutral-200">
+    <div className="bg-white text-neutral-900">
+      {/* <header className="border-b border-neutral-200">
         <div className="max-w-3xl mx-auto px-6 py-4">
           <a href="/" className="text-lg font-bold text-teal-600">MyToolzy</a>
         </div>
-      </header>
+      </header> */}
 
       <div className="max-w-3xl mx-auto px-6 py-12">
         <h1 className="text-3xl font-bold mb-2">Terms of Service</h1>
