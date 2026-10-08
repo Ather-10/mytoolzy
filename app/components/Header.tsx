@@ -43,11 +43,11 @@ export default function Header() {
       <header className="border-b border-neutral-200 bg-white">
         {/* Mobile bar: menu left, logo center, search right */}
         <div className="flex md:hidden items-center justify-between px-4 py-4">
-          <button onClick={() => setMenuOpen(true)} aria-label="Open menu">
+          <button onClick={() => setMenuOpen(true)} aria-label="Open menu" className="text-neutral-900 hover:text-teal-600">
             <Menu size={22} />
           </button>
           <Link href="/" className="text-lg font-bold text-teal-600">MyToolzy</Link>
-          <button onClick={() => setSearchOpen(true)} aria-label="Search">
+          <button onClick={() => setSearchOpen(true)} aria-label="Search" className="text-neutral-900 hover:text-teal-600">
             <Search size={20} />
           </button>
         </div>
@@ -76,7 +76,7 @@ export default function Header() {
               <button
                 onClick={() => setSearchOpen(true)}
                 aria-label="Search tools"
-                className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-neutral-100 text-neutral-700"
+                className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-neutral-100 text-neutral-900"
               >
                 <Search size={19} />
               </button>
@@ -87,11 +87,11 @@ export default function Header() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search tools..."
-                  className="border border-neutral-200 rounded-full px-4 py-1.5 text-sm w-56 focus:outline-none focus:border-teal-500"
+                  className="border border-neutral-200 text-neutral-800 rounded-full px-4 py-1.5 text-sm w-56 focus:outline-none focus:border-teal-500"
                 />
                 <button
                   onClick={closeSearch}
-                  className="text-neutral-400 hover:text-neutral-700"
+                  className="text-neutral-400 hover:text-neutral-900"
                   aria-label="Close search"
                 >
                   <X size={18} />
@@ -110,7 +110,7 @@ export default function Header() {
                           <div className="w-8 h-8 rounded-md bg-teal-600 text-white flex items-center justify-center">
                             {renderIcon(tool.icon, 16)}
                           </div>
-                          <span className="text-sm font-medium">{tool.name}</span>
+                          <span className="text-sm font-medium text-neutral-800">{tool.name}</span>
                         </Link>
                       ))
                     ) : (
@@ -133,9 +133,9 @@ export default function Header() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search tools..."
-              className="flex-1 border border-neutral-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-teal-500"
+              className="flex-1 border border-neutral-200 text-neutral-800 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-teal-500"
             />
-            <button onClick={closeSearch} className="text-neutral-500" aria-label="Close search">
+            <button onClick={closeSearch} className="text-neutral-900 hover:text-teal-600" aria-label="Close search">
               <X size={20} />
             </button>
           </div>
@@ -153,7 +153,7 @@ export default function Header() {
                   <div className="w-9 h-9 rounded-md bg-teal-600 text-white flex items-center justify-center">
                     {renderIcon(tool.icon, 17)}
                   </div>
-                  <span className="text-sm font-medium">{tool.name}</span>
+                  <span className="text-sm font-medium text-neutral-800">{tool.name}</span>
                 </Link>
               ))
             ) : (
@@ -170,7 +170,7 @@ export default function Header() {
           <div className="absolute left-0 top-0 h-full w-1/2 bg-white shadow-lg p-6">
             <div className="flex items-center justify-between mb-8">
               <span className="text-lg font-bold text-teal-600">MyToolzy</span>
-              <button onClick={() => setMenuOpen(false)} aria-label="Close menu">
+              <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="text-neutral-900 hover:text-teal-600">
                 <X size={22} />
               </button>
             </div>
