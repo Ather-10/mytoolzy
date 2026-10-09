@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, Search } from "lucide-react";
 import { TOOLS } from "../toolsData";
 import { ICON_MAP } from "../iconMap";
+import Image from "next/image";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -46,7 +47,12 @@ export default function Header() {
           <button onClick={() => setMenuOpen(true)} aria-label="Open menu" className="text-neutral-900 hover:text-teal-600">
             <Menu size={22} />
           </button>
-          <Link href="/" className="text-lg font-bold text-teal-600">MyToolzy</Link>
+          {/* MOBILE LOGO - YAHAN UPDATE KAREIN */}
+        <Link href="/" className="flex items-center gap-2 text-lg font-bold text-teal-600">
+          <Image src="/favicon.svg" alt="MyToolzy Logo" width={24} height={24} className="w-6 h-6" />
+          <span>MyToolzy</span>
+        </Link>
+          {/* <Link href="/" className="text-lg font-bold text-teal-600">MyToolzy</Link> */}
           <button onClick={() => setSearchOpen(true)} aria-label="Search" className="text-neutral-900 hover:text-teal-600">
             <Search size={20} />
           </button>
@@ -55,9 +61,14 @@ export default function Header() {
         {/* Desktop bar: logo + nav left, search right */}
         <div className="hidden md:flex max-w-6xl mx-auto px-6 py-4 items-center justify-between">
           <div className="flex items-center gap-10">
-            <Link href="/" className="text-xl font-extrabold text-teal-600 tracking-tight">
+            {/* DESKTOP LOGO - YAHAN UPDATE KAREIN (Line 58-60) */}
+          <Link href="/" className="flex items-center gap-2.5 text-xl font-extrabold text-teal-600 tracking-tight">
+            <Image src="/favicon.svg" alt="MyToolzy Logo" width={32} height={32} className="w-8 h-8" />
+            <span>MyToolzy</span>
+          </Link>
+            {/* <Link href="/" className="text-xl font-extrabold text-teal-600 tracking-tight">
               MyToolzy
-            </Link>
+            </Link> */}
             <nav className="flex gap-7 text-[15px] font-bold">
               {NAV_LINKS.map((link) => (
                 <Link
