@@ -55,4 +55,12 @@ export const TOOLS: Tool[] = [
     category: "Image",
     trending: true,
   },
+    {
+    name: "Password Generator",
+    href: "/tools/password-generator",
+    icon: "KeyRound",
+    description: "Create strong, random passwords with custom length and characters.",
+    category: "Generator",
+    trending: false,
+  },
 ];
