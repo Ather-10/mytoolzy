@@ -5,7 +5,7 @@ import { ICON_MAP } from "./iconMap";
 import { Zap, Lock, Gift } from "lucide-react";
 
 export default function Home() {
-  const trendingTools = TOOLS.filter((t) => t.trending).slice(0, 8);
+  const trendingTools = TOOLS.filter((t) => t.trending).slice(0, 12);
 
   return (
     <div className="bg-white text-neutral-900">
