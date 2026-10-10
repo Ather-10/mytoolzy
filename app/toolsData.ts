@@ -63,4 +63,20 @@ export const TOOLS: Tool[] = [
     category: "Generator",
     trending: false,
   },
+    {
+    name: "Word to PDF",
+    href: "/tools/word-to-pdf",
+    icon: "FileOutput",
+    description: "Convert Word documents (DOC, DOCX) into PDF in seconds.",
+    category: "PDF",
+    trending: true,
+  },
+    {
+    name: "Split PDF",
+    href: "/tools/split-pdf",
+    icon: "Scissors",
+    description: "Extract pages or split a PDF into separate files.",
+    category: "PDF",
+    trending: true,
+  },
 ];
