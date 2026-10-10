@@ -500,7 +500,7 @@ export default function SignPdfPage() {
             </div>
 
             {/* ── PDF Canvas — below sidebar on mobile ── */}
-            <div className="order-2 lg:order-1 lg:col-span-2 bg-neutral-50 rounded-xl p-3 sm:p-6 flex flex-col items-center justify-center min-h-[400px] border border-neutral-200 relative select-none w-full overflow-hidden">
+            <div className="order-2 lg:order-1 lg:col-span-2 bg-neutral-50 rounded-xl p-3 sm:p-6 flex flex-col items-center justify-center min-h:400px ; border border-neutral-200 relative select-none w-full overflow-hidden">
               <div
                 ref={pdfContainerRef}
                 onMouseMove={handleMouseMoveSig}
@@ -725,7 +725,7 @@ export default function SignPdfPage() {
                     </div>
                   </div>
 
-                  <div className="p-6 border border-neutral-200 rounded-lg bg-neutral-50 text-center flex items-center justify-center min-h-[90px]">
+                  <div className="p-6 border border-neutral-200 rounded-lg bg-neutral-50 text-center flex items-center justify-center min-h:90px;">
                     <span style={{ color: typedColor }} className="text-3xl italic font-serif">
                       {typedText || "Signature Preview"}
                     </span>
