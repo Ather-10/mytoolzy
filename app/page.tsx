@@ -11,7 +11,7 @@ export default function Home() {
     <div className="bg-white text-neutral-900">
       {/* Hero */}
       <section className="max-w-5xl mx-auto px-6 pt-16 pb-10 text-center">
-        <h1 className="mx-auto max-w-4xl text-3xl sm:text-4xl md:text-[4.2rem] font-bold leading-[0.95] tracking-[-0.05em] text-neutral-900">
+        <h1 className="mx-auto max-w-4xl text-3xl sm:text-4xl md:text-[4.2rem] font-bold leading-[0.95] tracking:-0.05em ; text-neutral-900">
           <span className="block md:inline">Every tool you need,</span>{" "}
           <span className="block md:inline">right in your browser.</span>
         </h1>
@@ -362,7 +362,7 @@ function FAQSection() {
 
 //       {/* Hero */}
 //       <section className="max-w-5xl mx-auto px-6 pt-16 pb-10 text-center">
-//         <h1 className="mx-auto max-w-4xl text-3xl sm:text-4xl md:text-[4.2rem] font-bold leading-[0.95] tracking-[-0.05em] text-neutral-900">
+//         <h1 className="mx-auto max-w-4xl text-3xl sm:text-4xl md:text-[4.2rem] font-bold leading-[0.95] tracking:-0.05em; text-neutral-900">
 //           <span className="block md:inline">Every tool you need,</span>{" "}
 //           <span className="block md:inline">right in your browser.</span>
 //         </h1>

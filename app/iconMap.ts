@@ -1,6 +1,7 @@
-import { Minimize2, QrCode, FileText, FileType, Combine, FileDown, Move, KeyRound,FileOutput, Scissors } from "lucide-react";
+import { Crop, Minimize2, QrCode, FileText, FileType, Combine, FileDown, Move, KeyRound,FileOutput, Scissors, Image,FileImage, PenTool } from "lucide-react";
 
 export const ICON_MAP: Record<string, any> = {
+  Crop,
   Minimize2,
   QrCode,
   FileText,
@@ -10,5 +11,8 @@ export const ICON_MAP: Record<string, any> = {
   KeyRound,
   FileOutput,
   Scissors,
-  FileType
+  FileType,
+  Image,
+  FileImage,
+  PenTool
 };
