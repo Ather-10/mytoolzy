@@ -159,4 +159,28 @@ export const TOOLS: Tool[] = [
   category: "Image",
   trending: false,
 },
+{
+  name: "AI PDF Summarizer",
+  href: "/tools/ai-pdf-summarizer",
+  icon: "Sparkles",
+  description: "Summarize lengthy PDF documents into key takeaways instantly using Gemini AI.",
+  category: "AI Tools",
+  trending: false,
+},
+{
+  name: "AI PDF Translator",
+  href: "/tools/ai-pdf-translator",
+  icon: "Languages",
+  description: "Translate entire PDF content into Urdu, Hindi, English, Arabic and 20+ languages.",
+  category: "AI Tools",
+  trending:  false,
+},
+{
+  name: "AI PDF to Markdown",
+  href: "/tools/ai-pdf-to-markdown",
+  icon: "FileCode",
+  description: "Convert PDF layout and text into structured, clean Markdown format with AI.",
+  category: "AI Tools",
+  trending: false,
+},
 ];
