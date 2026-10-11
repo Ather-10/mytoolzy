@@ -183,4 +183,28 @@ export const TOOLS: Tool[] = [
   category: "AI Tools",
   trending: false,
 },
+ {
+    name: "AI PDF Summarizer",
+    href: "/tools/ai-pdf-summarizer",
+    icon: "Sparkles",
+    description: "Get the key points of a PDF in seconds with AI.",
+    category: "AI",
+    trending: false,
+  },
+  {
+    name: "AI PDF Translator",
+    href: "/tools/ai-pdf-translator",
+    icon: "Languages",
+    description: "Translate a PDF into Urdu, Hindi, Arabic, English and more.",
+    category: "AI",
+    trending: false,
+  },
+  {
+    name: "AI PDF to Markdown",
+    href: "/tools/ai-pdf-to-markdown",
+    icon: "FileCode",
+    description: "Turn the text of a PDF into clean Markdown.",
+    category: "AI",
+    trending: false,
+  },
 ];

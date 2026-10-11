@@ -21,15 +21,20 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-neutral-900 mb-2">Tools that run entirely in your browser</h2>
-            <p>
-              Most tools on MyToolzy — including the Image Compressor, QR Code Generator, PDF
-              Merge, Compress PDF, and Image Resizer — process your files locally, directly in
-              your browser. These files are never uploaded to our servers or any third party.
-              Closing or refreshing the page removes them completely, since they were never
-              stored anywhere in the first place.
-            </p>
-          </section>
+                <h2 className="text-lg font-semibold text-neutral-900 mb-2">AI tools</h2>
+                <p>
+                  Our AI tools (AI PDF Summarizer, AI PDF Translator and AI PDF to Markdown) work in two steps.
+                  First, the text is read from your PDF inside your browser. Then only that text, not the PDF
+                  file itself, is sent through our server to Google&apos;s Gemini API to create the result. We do
+                  not store this text. Because we use Google&apos;s free tier, Google may use submitted text to
+                  improve its products, and human reviewers may read it. Please do not use these tools for
+                  confidential or sensitive documents. You can read Google&apos;s terms at{" "}
+                  <a href="https://ai.google.dev/terms" target="_blank" rel="noopener noreferrer" className="text-teal-600 underline">
+                    ai.google.dev/terms
+                  </a>
+                  .
+                </p>
+              </section>
 
           <section>
             <h2 className="text-lg font-semibold text-neutral-900 mb-2">Tools that use a third-party service</h2>
