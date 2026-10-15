@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@fontsource/caveat": "^5.3.0",
+    "@fontsource/dancing-script": "^5.3.0",
+    "@fontsource/great-vibes": "^5.3.0",
     "@google/genai": "^2.28.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
