@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { TOOLS } from "./toolsData";
 
 // Change this one line when the site moves to its own domain.
-const BASE_URL = "https://mytoolzy.vercel.app";
+const BASE_URL = "https://www.mytoolzy.online";
 
 // Pages that are not tools.
 const PAGES = ["/", "/tools", "/about", "/contact", "/privacy", "/terms"];
