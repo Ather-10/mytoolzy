@@ -1,22 +1,17 @@
-
 import type { MetadataRoute } from "next";
+import { TOOLS } from "./toolsData";
 
+// Change this one line when the site moves to its own domain.
 const BASE_URL = "https://mytoolzy.vercel.app";
 
-// Add your real, public static routes here.
-// Do not add private pages, redirects, or noindex pages.
-const STATIC_ROUTES = [
-  "/",
-  "/about",
-  "/contact",
-  "/privacy-policy",
-  "/terms",
-];
+// Pages that are not tools.
+const PAGES = ["/", "/tools", "/about", "/contact", "/privacy", "/terms"];
 
-export const revalidate = 3600; // Refresh sitemap cache hourly
+export default function sitemap(): MetadataRoute.Sitemap {
+  // every tool in toolsData.ts is added automatically; a Set removes repeats
+  const paths = Array.from(new Set([...PAGES, ...TOOLS.map((tool) => tool.href)]));
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  return STATIC_ROUTES.map((route) => ({
-    url: `${BASE_URL}${route === "/" ? "" : route}`,
+  return paths.map((path) => ({
+    url: path === "/" ? BASE_URL : `${BASE_URL}${path}`,
   }));
 }
