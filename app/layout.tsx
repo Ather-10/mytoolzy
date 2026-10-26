@@ -32,6 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         <script src="https://analytics.ahrefs.com/analytics.js" data-key="cgLRRlyN9xHWXQGBOmHfGw" async></script>
+        <meta name="google-site-verification" content="xneNKOGWNf-8JnkUHlAj2lThwdIfnjZVz40T6uXHnJs" />
       </head>
       {/* <body className="min-h-full flex flex-col">
         {children}
