@@ -8,7 +8,8 @@ import { ICON_MAP } from "./iconMap";
 import { Zap, Lock, Gift } from "lucide-react";
 
 export default function Home() {
-  const trendingTools = TOOLS.filter((t) => t.trending).slice(0, 9);
+  // Pehli row 4 + dusri row 4 (Peek effect) -> Total 8 tools
+  const trendingTools = TOOLS.filter((t) => t.trending).slice(0, 8);
 
   // JSON-LD Schema for Homepage SEO
   const websiteSchema = {
@@ -17,7 +18,7 @@ export default function Home() {
     name: "MyToolzy",
     url: "https://www.mytoolzy.online",
     description:
-      "Free online browser-based PDF tools, image processing utilities, and AI document tools.",
+      "Free browser-based PDF tools, image utilities, and AI document assistants.",
     potentialAction: {
       "@type": "SearchAction",
       target: "https://www.mytoolzy.online/tools?q={search_term_string}",
@@ -34,15 +35,15 @@ export default function Home() {
         name: "Is MyToolzy really free?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. Every tool on MyToolzy is 100% free to use with no hidden charges, sign-ups, or subscriptions.",
+          text: "Yes. Every tool on MyToolzy is 100% free with no hidden paywalls or accounts.",
         },
       },
       {
         "@type": "Question",
-        name: "Do I need to create an account?",
+        name: "Do I need an account?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. You can use every online utility tool immediately without registering or logging in.",
+          text: "No. You can use every tool instantly without signing up.",
         },
       },
       {
@@ -50,15 +51,15 @@ export default function Home() {
         name: "Is my data safe and private?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. All file processing happens locally inside your browser using JavaScript and HTML5 Canvas. Your files are never uploaded to our servers.",
+          text: "Yes. Files process locally in your browser. Nothing gets uploaded or saved.",
         },
       },
       {
         "@type": "Question",
-        name: "Can I use MyToolzy tools on mobile devices?",
+        name: "Does it work on mobile?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes, MyToolzy is fully responsive and works seamlessly across desktops, laptops, tablets, and smartphones.",
+          text: "Yes, MyToolzy is fully responsive across all modern mobile and desktop browsers.",
         },
       },
     ],
@@ -67,10 +68,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>MyToolzy - Free Online PDF & Image Utility Platform</title>
+        <title>MyToolzy - Fast & Free Browser-Based Web Utilities</title>
         <meta
           name="description"
-          content="MyToolzy offers 100% free browser-based online tools for PDF editing, image compression, format conversion, and AI document processing with absolute privacy."
+          content="Fast, 100% free browser tools for PDF editing, image compression, QR generation, and AI text summaries with absolute client-side privacy."
         />
         <script
           type="application/ld+json"
@@ -83,39 +84,40 @@ export default function Home() {
       </Head>
 
       <div className="bg-white text-neutral-900">
-        {/* Hero Section */}
-        <section className="max-w-5xl mx-auto px-6 pt-16 pb-12 text-center">
-          <h1 className="mx-auto max-w-4xl text-3xl sm:text-4xl md:text-[4.2rem] font-bold leading-[0.95] tracking-tight text-neutral-900">
-            <span className="block md:inline">Every online tool you need,</span>{" "}
-            <span className="block md:inline">right in your browser.</span>
+        {/* Short & Punchy Hero Section */}
+        <section className="max-w-4xl mx-auto px-6 pt-12 pb-8 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-neutral-900 leading-tight">
+            Free Online Tools Right in Your Browser
           </h1>
-          <p className="mx-auto mt-6 max-w-3xl text-base md:text-[1.1rem] leading-relaxed text-neutral-600">
-            <strong>MyToolzy</strong> provides 100% free, fast, and secure client-side browser tools. Compress images, protect & unlock PDFs, convert document formats, and summarize content with AI — all processed locally on your device.
+          <p className="mt-4 max-w-2xl mx-auto text-sm md:text-base text-neutral-600 leading-relaxed">
+            Fast, secure, and client-side utilities. Compress images, edit PDFs, and generate QR codes — 100% free with zero file uploads.
           </p>
         </section>
 
-        {/* Trending Tools Section */}
-        <section className="max-w-6xl mx-auto px-6 pb-20">
-          <h2 className="text-sm font-semibold text-neutral-500 uppercase tracking-wide mb-6 text-center">
-            Most Popular Free Utilities
+        {/* Trending Tools Section - 4 Tools Per Row Desktop */}
+        <section className="max-w-6xl mx-auto px-6 pb-16">
+          <h2 className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-5 text-center">
+            Most Popular Utilities
           </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+          
+          {/* 1 Row = 4 Tools on Desktop (md:grid-cols-4) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             {trendingTools.map((tool) => {
               const IconComp = ICON_MAP[tool.icon];
               return (
                 <Link
                   key={tool.href}
                   href={tool.href}
-                  className="group border border-neutral-200 rounded-xl p-6 hover:shadow-lg hover:-translate-y-0.5 transition-all bg-white flex flex-col justify-between"
+                  className="group border border-neutral-200 rounded-xl p-5 hover:shadow-md hover:border-teal-500 hover:-translate-y-0.5 transition-all bg-white flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-11 h-11 rounded-lg bg-teal-600 text-white flex items-center justify-center mb-4">
-                      {IconComp ? <IconComp size={20} /> : null}
+                    <div className="w-10 h-10 rounded-lg bg-teal-600 text-white flex items-center justify-center mb-3">
+                      {IconComp ? <IconComp size={18} /> : null}
                     </div>
-                    <h3 className="font-semibold text-base mb-1 group-hover:text-teal-600 text-neutral-900">
+                    <h3 className="font-semibold text-sm mb-1 group-hover:text-teal-600 text-neutral-900">
                       {tool.name}
                     </h3>
-                    <p className="text-sm text-neutral-500 leading-relaxed">
+                    <p className="text-xs text-neutral-500 leading-relaxed line-clamp-2">
                       {tool.description}
                     </p>
                   </div>
@@ -126,115 +128,115 @@ export default function Home() {
         </section>
 
         {/* Features & Value Proposition */}
-        <section className="bg-neutral-50 border-t border-neutral-200 py-16">
+        <section className="bg-neutral-50 border-t border-neutral-200 py-14">
           <div className="max-w-5xl mx-auto px-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-10 text-neutral-900">
-              Why Users Trust MyToolzy
+            <h2 className="text-xl md:text-2xl font-bold text-center mb-8 text-neutral-900">
+              Why People Prefer MyToolzy
             </h2>
-            <div className="grid sm:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-12 h-12 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center mx-auto mb-3">
-                  <Zap size={22} />
+            <div className="grid sm:grid-cols-3 gap-6">
+              <div className="text-center p-4">
+                <div className="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center mx-auto mb-3">
+                  <Zap size={20} />
                 </div>
-                <h3 className="font-semibold mb-1 text-base text-neutral-900">
-                  Instant Browser Processing
+                <h3 className="font-semibold text-sm mb-1 text-neutral-900">
+                  Instant Results
                 </h3>
-                <p className="text-sm text-neutral-500 leading-relaxed">
-                  All image and PDF file conversions run locally in WebAssembly and client JavaScript. Zero server waiting times.
+                <p className="text-xs text-neutral-500 leading-relaxed">
+                  Tools run directly inside your browser. No server waiting queues or upload lags.
                 </p>
               </div>
-              <div className="text-center">
-                <div className="w-12 h-12 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center mx-auto mb-3">
-                  <Lock size={22} />
+              <div className="text-center p-4">
+                <div className="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center mx-auto mb-3">
+                  <Lock size={20} />
                 </div>
-                <h3 className="font-semibold mb-1 text-base text-neutral-900">
-                  100% Privacy & Security
+                <h3 className="font-semibold text-sm mb-1 text-neutral-900">
+                  Private & Secure
                 </h3>
-                <p className="text-sm text-neutral-500 leading-relaxed">
-                  Your confidential documents, photos, and files never leave your computer. Nothing is saved or uploaded.
+                <p className="text-xs text-neutral-500 leading-relaxed">
+                  Files stay on your local device. Nothing is ever uploaded or stored remotely.
                 </p>
               </div>
-              <div className="text-center">
-                <div className="w-12 h-12 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center mx-auto mb-3">
-                  <Gift size={22} />
+              <div className="text-center p-4">
+                <div className="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center mx-auto mb-3">
+                  <Gift size={20} />
                 </div>
-                <h3 className="font-semibold mb-1 text-base text-neutral-900">
-                  Free Forever, No Limits
+                <h3 className="font-semibold text-sm mb-1 text-neutral-900">
+                  100% Free Forever
                 </h3>
-                <p className="text-sm text-neutral-500 leading-relaxed">
-                  Enjoy unrestricted access to image compressors, PDF encryptors, and converters without subscriptions or sign-ups.
+                <p className="text-xs text-neutral-500 leading-relaxed">
+                  No subscriptions, registration, or hidden usage limits. Open and use instantly.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Comprehensive SEO Content Block */}
-        <article className="max-w-5xl mx-auto px-6 py-16 space-y-8 text-neutral-800 border-t border-neutral-200">
+        {/* SEO Content Block */}
+        <article className="max-w-5xl mx-auto px-6 py-14 space-y-6 text-neutral-800 border-t border-neutral-200">
           <header>
-            <h2 className="text-2xl font-bold mb-3 text-neutral-900">
-              Free Online Document & Image Management Suite
+            <h2 className="text-xl font-bold mb-2 text-neutral-900">
+              Browser-Based Image & PDF Utility Platform
             </h2>
-            <p className="text-sm text-neutral-600 leading-relaxed">
-              MyToolzy is designed for professionals, students, developers, and creators who need fast, reliable web utilities. Whether you need to <strong>compress images</strong> for web speed optimization, <strong>protect sensitive PDF files</strong> with military-grade password encryption, or convert documents between PDF, Word, and Markdown formats, our platform executes everything client-side.
+            <p className="text-xs md:text-sm text-neutral-600 leading-relaxed">
+              MyToolzy offers lightweight, high-performance web utilities for students, developers, and creators. Whether you want to <strong>compress images</strong> for faster website loading, <strong>protect PDF documents</strong> with encryption, or convert file formats, everything runs client-side.
             </p>
           </header>
 
-          <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-5 border border-neutral-200 rounded-xl bg-white">
-              <h3 className="font-bold text-lg mb-2 text-teal-700">PDF Utilities</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border border-neutral-200 rounded-lg bg-white">
+              <h3 className="font-bold text-sm mb-1 text-teal-700">PDF Suite</h3>
               <p className="text-xs text-neutral-600 leading-relaxed">
-                Effortlessly split, merge, compress, protect, unlock, and sign PDF documents. Extract pages, crop margins with interactive controls, and maintain 100% original text and visual quality.
+                Compress, split, merge, lock, unlock, and sign PDFs locally with high output fidelity.
               </p>
             </div>
-            <div className="p-5 border border-neutral-200 rounded-xl bg-white">
-              <h3 className="font-bold text-lg mb-2 text-teal-700">Image & AI Tools</h3>
+            <div className="p-4 border border-neutral-200 rounded-lg bg-white">
+              <h3 className="font-bold text-sm mb-1 text-teal-700">Image & AI Utilities</h3>
               <p className="text-xs text-neutral-600 leading-relaxed">
-                Resize photos, crop image boundaries, compress JPG/PNG/WebP graphics, generate custom QR codes, and leverage Gemini AI to summarize and translate PDFs instantly.
+                Resize photos, crop graphics, build custom QR codes, and generate fast AI document summaries.
               </p>
             </div>
-          </section>
+          </div>
 
           {/* Clean Internal Linking Hub (No Emojis) */}
-          <section className="pt-6 border-t border-neutral-200">
-            <h2 className="text-xl font-bold mb-4 text-neutral-900">
-              Browse All Available Tools by Category
+          <section className="pt-4 border-t border-neutral-200">
+            <h2 className="text-lg font-bold mb-3 text-neutral-900">
+              Browse Tools by Category
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 text-xs">
-              <Link href="/tools/image-compressor" className="p-3 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 text-xs">
+              <Link href="/tools/image-compressor" className="p-2.5 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
                 Image Compressor
               </Link>
-              <Link href="/tools/image-resizer" className="p-3 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
+              <Link href="/tools/image-resizer" className="p-2.5 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
                 Image Resizer
               </Link>
-              <Link href="/tools/image-cropper-converter" className="p-3 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
-                Image Cropper & Converter
+              <Link href="/tools/image-cropper-converter" className="p-2.5 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
+                Image Cropper
               </Link>
-              <Link href="/tools/jpg-to-pdf" className="p-3 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
+              <Link href="/tools/jpg-to-pdf" className="p-2.5 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
                 JPG to PDF
               </Link>
-              <Link href="/tools/pdf-to-image" className="p-3 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
+              <Link href="/tools/pdf-to-image" className="p-2.5 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
                 PDF to Image
               </Link>
-              <Link href="/tools/compress-pdf" className="p-3 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
+              <Link href="/tools/compress-pdf" className="p-2.5 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
                 Compress PDF
               </Link>
-              <Link href="/tools/protect-pdf" className="p-3 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
+              <Link href="/tools/protect-pdf" className="p-2.5 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
                 Protect PDF
               </Link>
-              <Link href="/tools/unlock-pdf" className="p-3 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
+              <Link href="/tools/unlock-pdf" className="p-2.5 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
                 Unlock PDF
               </Link>
-              <Link href="/tools/crop-pdf" className="p-3 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
+              <Link href="/tools/crop-pdf" className="p-2.5 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
                 Crop PDF
               </Link>
-              <Link href="/tools/sign-pdf" className="p-3 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
+              <Link href="/tools/sign-pdf" className="p-2.5 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
                 Sign PDF
               </Link>
-              <Link href="/tools/qr-code-generator" className="p-3 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
+              <Link href="/tools/qr-code-generator" className="p-2.5 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
                 QR Code Generator
               </Link>
-              <Link href="/tools/ai-pdf-summarizer" className="p-3 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
+              <Link href="/tools/ai-pdf-summarizer" className="p-2.5 border border-neutral-200 rounded-md hover:border-teal-500 hover:text-teal-600 transition font-medium text-center bg-white">
                 AI PDF Summarizer
               </Link>
             </div>
@@ -252,30 +254,30 @@ function FAQSection() {
   const faqs = [
     {
       q: "Is MyToolzy really free?",
-      a: "Yes. Every tool on MyToolzy is 100% free to use, with no hidden charges, premium paywalls, or subscriptions.",
+      a: "Yes. Every tool is 100% free with no hidden charges, paywalls, or subscriptions.",
     },
     {
-      q: "Do I need to create an account to use the tools?",
-      a: "No. You can use every tool immediately without signing up, registering, or providing personal information.",
+      q: "Do I need to create an account?",
+      a: "No registration or login is required to access any tool.",
     },
     {
       q: "Is my data safe and private?",
-      a: "Yes. All processing runs entirely inside your browser. Your images and documents are processed locally and never stored on remote servers.",
+      a: "Yes. Processing runs locally inside your browser. Files are never uploaded to our servers.",
     },
     {
-      q: "Can I use these tools on mobile devices?",
-      a: "Yes, MyToolzy works on any modern web browser across desktop computers, tablets, and smartphones.",
+      q: "Can I use these tools on mobile?",
+      a: "Yes, MyToolzy works smoothly across desktop, tablet, and smartphone browsers.",
     },
   ];
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="max-w-3xl mx-auto px-6 py-16 border-t border-neutral-200">
-      <h2 className="text-2xl font-bold text-center mb-8 text-neutral-900">
+    <section className="max-w-3xl mx-auto px-6 py-14 border-t border-neutral-200">
+      <h2 className="text-xl font-bold text-center mb-6 text-neutral-900">
         Frequently Asked Questions
       </h2>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-2.5">
         {faqs.map((faq, i) => {
           const isOpen = openIndex === i;
           return (
@@ -287,11 +289,11 @@ function FAQSection() {
             >
               <button
                 onClick={() => setOpenIndex(isOpen ? null : i)}
-                className="w-full flex items-center justify-between text-left px-5 py-4 font-medium text-neutral-900 focus:outline-none"
+                className="w-full flex items-center justify-between text-left px-4 py-3 font-medium text-neutral-900 focus:outline-none text-sm"
               >
                 <span>{faq.q}</span>
                 <span
-                  className={`text-teal-600 text-xl leading-none transition-transform duration-300 ${
+                  className={`text-teal-600 text-lg leading-none transition-transform duration-300 ${
                     isOpen ? "rotate-45" : "rotate-0"
                   }`}
                 >
@@ -303,7 +305,7 @@ function FAQSection() {
                 style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
               >
                 <div className="overflow-hidden">
-                  <p className="px-5 pb-4 text-sm text-neutral-600 leading-relaxed">
+                  <p className="px-4 pb-3 text-xs text-neutral-600 leading-relaxed">
                     {faq.a}
                   </p>
                 </div>
