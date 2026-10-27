@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -41,40 +42,70 @@ export default function Header() {
 
   return (
     <>
-      <header className="border-b border-neutral-200 bg-white">
-        {/* Mobile bar: menu left, logo center, search right */}
-        <div className="flex md:hidden items-center justify-between px-4 py-4">
-          <button onClick={() => setMenuOpen(true)} aria-label="Open menu" className="text-neutral-900 hover:text-teal-600">
+      <header className="border-b border-neutral-200 bg-white sticky top-0 z-40">
+        {/* Mobile Bar: Menu Left, Logo Center, Search Right */}
+        <div className="flex md:hidden items-center justify-between px-4 py-3.5">
+          <button
+            onClick={() => setMenuOpen(true)}
+            aria-label="Open navigation menu"
+            aria-expanded={menuOpen}
+            className="text-neutral-900 hover:text-teal-600 p-1 focus:outline-none"
+          >
             <Menu size={22} />
           </button>
-          {/* MOBILE LOGO - YAHAN UPDATE KAREIN */}
-        <Link href="/" className="flex items-center gap-2 text-lg font-bold text-teal-600">
-          <Image src="/favicon.svg" alt="MyToolzy Logo" width={24} height={24} className="w-6 h-6" />
-          <span>MyToolzy</span>
-        </Link>
-          {/* <Link href="/" className="text-lg font-bold text-teal-600">MyToolzy</Link> */}
-          <button onClick={() => setSearchOpen(true)} aria-label="Search" className="text-neutral-900 hover:text-teal-600">
+
+          {/* Mobile Logo */}
+          <Link href="/" className="flex items-center gap-2 text-lg font-bold text-teal-600">
+            <Image
+              src="/favicon.svg"
+              alt="MyToolzy Logo"
+              width={24}
+              height={24}
+              className="w-6 h-6"
+              priority
+            />
+            <span>MyToolzy</span>
+          </Link>
+
+          <button
+            onClick={() => setSearchOpen(true)}
+            aria-label="Search tools"
+            aria-expanded={searchOpen}
+            className="text-neutral-900 hover:text-teal-600 p-1 focus:outline-none"
+          >
             <Search size={20} />
           </button>
         </div>
 
-        {/* Desktop bar: logo + nav left, search right */}
+        {/* Desktop Bar: Logo + Nav Left, Search Right */}
         <div className="hidden md:flex max-w-6xl mx-auto px-6 py-4 items-center justify-between">
           <div className="flex items-center gap-10">
-            {/* DESKTOP LOGO - YAHAN UPDATE KAREIN (Line 58-60) */}
-          <Link href="/" className="flex items-center gap-2.5 text-xl font-extrabold text-teal-600 tracking-tight">
-            <Image src="/favicon.svg" alt="MyToolzy Logo" width={32} height={32} className="w-8 h-8" />
-            <span>MyToolzy</span>
-          </Link>
-            {/* <Link href="/" className="text-xl font-extrabold text-teal-600 tracking-tight">
-              MyToolzy
-            </Link> */}
+            {/* Desktop Logo */}
+            <Link
+              href="/"
+              className="flex items-center gap-2.5 text-xl font-extrabold text-teal-600 tracking-tight hover:opacity-90 transition-opacity"
+            >
+              <Image
+                src="/favicon.svg"
+                alt="MyToolzy Logo"
+                width={32}
+                height={32}
+                className="w-8 h-8"
+                priority
+              />
+              <span>MyToolzy</span>
+            </Link>
+
             <nav className="flex gap-7 text-[15px] font-bold">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={isActive(link.href) ? "text-teal-600" : "text-neutral-700 hover:text-teal-600"}
+                  className={`transition-colors ${
+                    isActive(link.href)
+                      ? "text-teal-600 font-bold"
+                      : "text-neutral-700 hover:text-teal-600"
+                  }`}
                 >
                   {link.label}
                 </Link>
@@ -86,8 +117,8 @@ export default function Header() {
             {!searchOpen ? (
               <button
                 onClick={() => setSearchOpen(true)}
-                aria-label="Search tools"
-                className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-neutral-100 text-neutral-900"
+                aria-label="Open tools search"
+                className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-neutral-100 text-neutral-900 transition-colors"
               >
                 <Search size={19} />
               </button>
@@ -98,11 +129,11 @@ export default function Header() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search tools..."
-                  className="border border-neutral-200 text-neutral-800 rounded-full px-4 py-1.5 text-sm w-56 focus:outline-none focus:border-teal-500"
+                  className="border border-neutral-200 text-neutral-800 rounded-full px-4 py-1.5 text-sm w-56 focus:outline-none focus:border-teal-500 bg-white shadow-sm"
                 />
                 <button
                   onClick={closeSearch}
-                  className="text-neutral-400 hover:text-neutral-900"
+                  className="text-neutral-400 hover:text-neutral-900 transition-colors"
                   aria-label="Close search"
                 >
                   <X size={18} />
@@ -116,9 +147,9 @@ export default function Header() {
                           key={tool.href}
                           href={tool.href}
                           onClick={closeSearch}
-                          className="flex items-center gap-3 px-4 py-3 hover:bg-neutral-50 border-b border-neutral-100 last:border-0"
+                          className="flex items-center gap-3 px-4 py-3 hover:bg-neutral-50 border-b border-neutral-100 last:border-0 transition-colors"
                         >
-                          <div className="w-8 h-8 rounded-md bg-teal-600 text-white flex items-center justify-center">
+                          <div className="w-8 h-8 rounded-md bg-teal-600 text-white flex items-center justify-center shrink-0">
                             {renderIcon(tool.icon, 16)}
                           </div>
                           <span className="text-sm font-medium text-neutral-800">{tool.name}</span>
@@ -135,22 +166,26 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile search overlay */}
+      {/* Mobile Search Overlay */}
       {searchOpen && (
-        <div className="fixed inset-0 z-50 bg-white md:hidden">
+        <div className="fixed inset-0 z-50 bg-white md:hidden animate-in fade-in duration-200">
           <div className="flex items-center gap-3 px-4 py-4 border-b border-neutral-200">
             <input
               autoFocus
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search tools..."
-              className="flex-1 border border-neutral-200 text-neutral-800 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-teal-500"
+              className="flex-1 border border-neutral-200 text-neutral-800 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-teal-500 bg-white"
             />
-            <button onClick={closeSearch} className="text-neutral-900 hover:text-teal-600" aria-label="Close search">
+            <button
+              onClick={closeSearch}
+              className="text-neutral-900 hover:text-teal-600 p-1"
+              aria-label="Close search"
+            >
               <X size={20} />
             </button>
           </div>
-          <div className="px-4 py-2">
+          <div className="px-4 py-2 overflow-y-auto max-h-[calc(100vh-80px)]">
             {searchQuery.trim() === "" ? (
               <p className="text-sm text-neutral-400 py-6 text-center">Start typing to search tools</p>
             ) : searchResults.length > 0 ? (
@@ -159,12 +194,12 @@ export default function Header() {
                   key={tool.href}
                   href={tool.href}
                   onClick={closeSearch}
-                  className="flex items-center gap-3 py-3 border-b border-neutral-100"
+                  className="flex items-center gap-3 py-3 border-b border-neutral-100 text-neutral-800"
                 >
-                  <div className="w-9 h-9 rounded-md bg-teal-600 text-white flex items-center justify-center">
+                  <div className="w-9 h-9 rounded-md bg-teal-600 text-white flex items-center justify-center shrink-0">
                     {renderIcon(tool.icon, 17)}
                   </div>
-                  <span className="text-sm font-medium text-neutral-800">{tool.name}</span>
+                  <span className="text-sm font-medium">{tool.name}</span>
                 </Link>
               ))
             ) : (
@@ -174,32 +209,60 @@ export default function Header() {
         </div>
       )}
 
-      {/* Mobile slide-in menu */}
-      {menuOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
-          <div className="absolute inset-0 bg-black/40" onClick={() => setMenuOpen(false)}></div>
-          <div className="absolute left-0 top-0 h-full w-1/2 bg-white shadow-lg p-6">
-            <div className="flex items-center justify-between mb-8">
-              <span className="text-lg font-bold text-teal-600">MyToolzy</span>
-              <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="text-neutral-900 hover:text-teal-600">
-                <X size={22} />
-              </button>
-            </div>
-            <nav className="flex flex-col gap-5">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className={isActive(link.href) ? "text-teal-600 font-semibold" : "text-neutral-700 hover:text-teal-600"}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
+      {/* Mobile Slide-in Drawer with Smooth CSS Transition */}
+      <div
+        className={`fixed inset-0 z-50 md:hidden transition-opacity duration-300 ease-in-out ${
+          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        {/* Backdrop overlay */}
+        <div
+          className="absolute inset-0 bg-black/40 transition-opacity duration-300"
+          onClick={() => setMenuOpen(false)}
+        />
+
+        {/* Drawer content */}
+        <div
+          className={`absolute left-0 top-0 h-full w-2/3 max-w-xs bg-white shadow-xl p-6 transition-transform duration-300 ease-in-out transform ${
+            menuOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          <div className="flex items-center justify-between mb-8">
+            <Link
+              href="/"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center gap-2 text-lg font-bold text-teal-600"
+            >
+              <Image src="/favicon.svg" alt="MyToolzy Logo" width={24} height={24} className="w-6 h-6" />
+              <span>MyToolzy</span>
+            </Link>
+            <button
+              onClick={() => setMenuOpen(false)}
+              aria-label="Close menu"
+              className="text-neutral-900 hover:text-teal-600 p-1 focus:outline-none"
+            >
+              <X size={22} />
+            </button>
           </div>
+
+          <nav className="flex flex-col gap-5">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className={`text-base font-medium transition-colors ${
+                  isActive(link.href)
+                    ? "text-teal-600 font-bold"
+                    : "text-neutral-700 hover:text-teal-600"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
         </div>
-      )}
+      </div>
     </>
   );
 }
