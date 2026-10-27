@@ -78,7 +78,7 @@ export default function AllTools() {
           </div>
 
           {/* Tools Grid */}
-          <section className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+          <section className="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
             {filteredTools.map((tool) => {
               const IconComp = ICON_MAP[tool.icon];
               return (
