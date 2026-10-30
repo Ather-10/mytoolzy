@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Free Online Image Compressor | MyToolzy",
     description: "Compress images online without quality loss. 100% client-side privacy.",
-    images: ["https://www.mytoolzy.online/og/image-compressor.png"],
+    images: ["https://www.mytoolzy.online/og/image-compressor.jpg"],
   },
 };
 
